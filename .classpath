@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="org/openscience/cdk/libio/joelib/JOELibIOTest.java" kind="src" path="src/test"/>
+	<classpathentry excluding="test/|main/" kind="src" path="src"/>
+	<classpathentry kind="src" path="src/main"/>
+	<classpathentry kind="lib" path="jar/log4j.jar"/>
+	<classpathentry kind="lib" path="jar/vecmath1.2-1.14.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="jar/weka.jar"/>
+	<classpathentry kind="lib" path="develjar/ant-contrib-1.0b3.jar"/>
+	<classpathentry kind="lib" path="develjar/junit-4.3.1.jar"/>
+	<classpathentry kind="lib" path="jar/xom-1.1.jar"/>
+	<classpathentry kind="lib" path="develjar/com-sun-javadoc.jar"/>
+	<classpathentry kind="lib" path="develjar/com-sun-tools-doclets-Taglet.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.openscience.cdk"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
