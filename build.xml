@@ -15,7 +15,6 @@
         <property name="pathtojoelib" value="jar/libio" />
         <property name="pathtojmol" value="jar/libio" />
         <property name="weka.jar" value="weka.jar" />
-        <property name="cdk.jar" value="cdk-${version}.jar" />
 
        <!-- directories -->
         <property name="build" value="build" />
@@ -73,7 +72,6 @@
             <echo message="      build.xml: $Id: build.xml 10219 2008-02-22 19:13:45Z egonw $" />
             <echo message="    JUnit found: ${junit.present}" />
             <echo message=" --- required libraries ---" />
-            <echo message="      CDK found: ${cdk.present}" />
             <echo message="  Vecmath found: ${vecmath.present}" />
             <echo message="    Log4j found: ${log4j.present}" />
             <echo message=" --- distributed (but optional) libraries ---" />
@@ -106,8 +104,6 @@
             <!-- Checks which parts of CDK can be build. -->
 
             <!-- test for optional jars -->
-            <available property="cdk.present"
-                       file="${lib}/${cdk.jar}"/>
             <available property="weka.present"
                        file="${lib}/${weka.jar}"/>
             <available property="vecmath.present"
@@ -282,7 +278,7 @@
                         <exclude name="**/*" unless="module.devellibdepends.present" />
                         <includesfile name="${metainf}/${module}.devellibdepends" if="module.devellibdepends.present" />
                     </fileset>
-                    <fileset dir="${dist}/jar">
+                    <fileset dir="jar">
                         <exclude name="**/*" unless="module.cdkdepends.present" />
                         <includesfile name="${metainf}/${module}.cdkdepends" if="module.cdkdepends.present" />
                     </fileset>
