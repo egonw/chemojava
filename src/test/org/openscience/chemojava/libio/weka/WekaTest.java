@@ -27,6 +27,8 @@
  *  */
 package org.openscience.chemojava.libio.weka;
 
+import java.io.InputStream;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
@@ -54,7 +56,9 @@ public class WekaTest extends CDKTestCase {
 		options[3] = "0.00000008"; 
 		lr.setOptions(options);
 		Weka weka = new Weka();
-		weka.setDatasetCDK("data/arff/Table1.arff", lr);
+		InputStream stream = this.getClass().getClassLoader().
+		    getResourceAsStream("data/arff/Table1.arff");
+		weka.setDataset(stream, lr);
 		Object[] result = weka.getPredictionCDK("data/arff/Table2.arff");
 		Assert.assertNotNull(result);
     }
@@ -72,7 +76,9 @@ public class WekaTest extends CDKTestCase {
 		options[3] = "0.00000008"; 
 		lr.setOptions(options);
 		Weka weka = new Weka();
-		weka.setDatasetCDK("data/arff/Table1.arff", lr);
+		InputStream stream = this.getClass().getClassLoader().
+		    getResourceAsStream("data/arff/Table1.arff");
+		weka.setDataset(stream, lr);
 		Object[][] testX = {{new Double(2),new Double(2)},
 			{new Double(5),new Double(5)}
 		};
