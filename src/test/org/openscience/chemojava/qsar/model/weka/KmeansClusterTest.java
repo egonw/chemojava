@@ -25,9 +25,8 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
 import org.openscience.chemojava.libio.weka.Weka;
 
@@ -40,23 +39,9 @@ import org.openscience.chemojava.libio.weka.Weka;
 public class KmeansClusterTest extends CDKTestCase {
 
 	/**
-	 * Constructor of the KmeansClusterTest
-	 */
-	public KmeansClusterTest(){}
-
-	/**
-	 * A unit test suite for JUnit
-	 *
-	 * @return The test suite
-	 */
-	public static Test suite() {
-		return new TestSuite(KmeansClusterTest.class);
-	}
-
-	/**
 	 * @throws Exception
 	 */
-	public void testKmeansCluster_N() throws Exception{
+	@Test public void testKmeansCluster_N() throws Exception{
 		String[] options = {"-N", "3"};
 		KmeansCluster test = new KmeansCluster();
 		test.setOptions(options);
@@ -78,18 +63,18 @@ public class KmeansClusterTest extends CDKTestCase {
 		};
 		test.setParameters(newx);
 		test.clusterInstance();;
-		assertNotNull (test.getClusterInstance());
-		assertNotNull (test.getClusterCentroids());
-		assertEquals(3.0, Math.rint(test.getSquaredError()), 0.01);
-		assertNotNull (test.getClusterStandardDevs());
-		assertNotNull (test.getClusterSizes());
-		assertEquals(3, test.numberOfCluster());
+		Assert.assertNotNull (test.getClusterInstance());
+		Assert.assertNotNull (test.getClusterCentroids());
+		Assert.assertEquals(3.0, Math.rint(test.getSquaredError()), 0.01);
+		Assert.assertNotNull (test.getClusterStandardDevs());
+		Assert.assertNotNull (test.getClusterSizes());
+		Assert.assertEquals(3, test.numberOfCluster());
 	}
 
 	/**
 	 * @throws Exception
 	 */
-	public void testKmeansCluster_S() throws Exception{
+	@Test public void testKmeansCluster_S() throws Exception{
 		String[] options = {"-S", "4"};
 		KmeansCluster test = new KmeansCluster();
 		test.setOptions(options);
@@ -111,11 +96,11 @@ public class KmeansClusterTest extends CDKTestCase {
 		};
 		test.setParameters(newx);
 		test.clusterInstance();
-		assertNotNull (test.getClusterInstance());
-		assertEquals(2, test.numberOfCluster());
-		assertNotNull (test.getClusterCentroids());
-		assertEquals(4.0, Math.rint(test.getSquaredError()), 0.01);
-		assertNotNull (test.getClusterStandardDevs());
-		assertNotNull (test.getClusterSizes());
+		Assert.assertNotNull (test.getClusterInstance());
+		Assert.assertEquals(2, test.numberOfCluster());
+		Assert.assertNotNull (test.getClusterCentroids());
+		Assert.assertEquals(4.0, Math.rint(test.getSquaredError()), 0.01);
+		Assert.assertNotNull (test.getClusterStandardDevs());
+		Assert.assertNotNull (test.getClusterSizes());
 	}
 }

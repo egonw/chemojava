@@ -23,8 +23,9 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
 /**
  * TestSuite that runs all the tests for the CDK libio-weka module.
@@ -32,34 +33,22 @@ import junit.framework.TestSuite;
  * @cdk.module test-qsar
  * @cdk.depends junit.jar
  */
+@RunWith(Suite.class)
+@SuiteClasses({
+    J48WModelTest.class,
+    LinearRegressionWModelTest.class,
+    DensityBasedClustererModelTest.class,
+    EMClusterTest.class,
+    FilterSupervisedResampleTest.class,
+    FilterUnSupervisedResampleTest.class,
+    FilterSupervisedResampleTest.class,
+    KmeansClusterTest.class,
+    MultilayerPerceptronModelTest.class,
+    NaiveBayesModelTest.class,
+    SimpleLinearRegressionModelTest.class,
+    SMOModelTest.class,
+    SMOregModelTest.class
+})
 public class QSARWekaModelTests {
-    /**
-     * Constructor of the QSARWekaModelTests object
-     */
-    public QSARWekaModelTests() {
-    }
 
-    /**
-     * A unit test suite for JUnit
-     *
-     * @return The test suite
-     */
-    public static Test suite() {
-        TestSuite suite = new TestSuite("CDK standard Tests");
-
-        suite.addTest(J48WModelTest.suite());
-        suite.addTest(LinearRegressionWModelTest.suite());
-        suite.addTest(DensityBasedClustererModelTest.suite());
-        suite.addTest(EMClusterTest.suite());
-        suite.addTest(FilterSupervisedResampleTest.suite());
-        suite.addTest(FilterUnSupervisedResampleTest.suite());
-        suite.addTest(FilterUnSupervisedRandomizeTest.suite());
-        suite.addTest(KmeansClusterTest.suite());
-        suite.addTest(MultilayerPerceptronModelTest.suite());
-        suite.addTest(NaiveBayesModelTest.suite());
-        suite.addTest(SimpleLinearRegressionModelTest.suite());
-        suite.addTest(SMOModelTest.suite());
-        suite.addTest(SMOregModelTest.suite());
-        return suite;
-    }
 }

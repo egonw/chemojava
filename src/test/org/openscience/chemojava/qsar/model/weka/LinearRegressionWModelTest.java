@@ -23,9 +23,8 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.qsar.model.QSARModelException;
@@ -38,26 +37,11 @@ import org.openscience.cdk.qsar.model.QSARModelException;
  */
 public class LinearRegressionWModelTest extends CDKTestCase {
     /**
-     * Constructor of the LinearRegressionModelTest object
-     */
-    public LinearRegressionWModelTest() {
-    }
-
-    /**
-     * A unit test suite for JUnit
-     *
-     * @return The test suite
-     */
-    public static Test suite() {
-        return new TestSuite(LinearRegressionWModelTest.class);
-    }
-
-    /**
      * @throws CDKException
      * @throws Exception
      * @throws QSARModelException
      */
-    public void testLinearRegressionWModel1() throws CDKException, java.lang.Exception, QSARModelException {
+    @Test public void testLinearRegressionWModel1() throws Exception {
 
         double[][] x = {{1, 1}, {3, 3}, {4, 4}, {6, 6}};
         Double[][] xD = new Double[x.length][x[0].length];
@@ -89,8 +73,8 @@ public class LinearRegressionWModelTest extends CDKTestCase {
         lrm.predict();
 
         Double[] preds = (Double[]) lrm.getPredictPredicted();
-        assertEquals(1.0, (preds[0]).doubleValue(), 0.001);
-        assertEquals(4.0, (preds[1]).doubleValue(), 0.001);
+        Assert.assertEquals(1.0, (preds[0]).doubleValue(), 0.001);
+        Assert.assertEquals(4.0, (preds[1]).doubleValue(), 0.001);
     }
 
     /**
@@ -110,9 +94,9 @@ public class LinearRegressionWModelTest extends CDKTestCase {
         lrm.setParametersCDK("data/arff/Table2.arff");
         lrm.predict();
         Double[] result = (Double[]) lrm.getPredictPredicted();
-        assertNotNull(result);
-        assertEquals(1.0, (result[0]).doubleValue(), 0.001);
-        assertEquals(4.0, (result[1]).doubleValue(), 0.001);
+        Assert.assertNotNull(result);
+        Assert.assertEquals(1.0, (result[0]).doubleValue(), 0.001);
+        Assert.assertEquals(4.0, (result[1]).doubleValue(), 0.001);
     }
 //	/**
 //	 * 

@@ -25,9 +25,8 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
 import org.openscience.chemojava.libio.weka.Weka;
 
@@ -40,23 +39,9 @@ import org.openscience.chemojava.libio.weka.Weka;
 public class EMClusterTest extends CDKTestCase{
 
 	/**
-	 * Constructor of the EMClusterTest
-	 */
-	public EMClusterTest(){}
-
-	/**
-	 * A unit test suite for JUnit
-	 *
-	 * @return The test suite
-	 */
-	public static Test suite() {
-		return new TestSuite(EMClusterTest.class);
-	}
-
-	/**
 	 * @throws Exception
 	 */
-	public void testEMCluster() throws Exception{
+	@Test public void testEMCluster() throws Exception{
 //		String[] options = {"-N", "3"};
 		EMCluster test = new EMCluster();
 //		test.setOptions(options);
@@ -78,16 +63,16 @@ public class EMClusterTest extends CDKTestCase{
 		};
 		test.setParameters(newx);
 		test.logDensityPerClusterForInstance();
-		assertNotNull (test.clusterPriors());
-		assertNotNull (test.getClusterModelsNumericAtts());
-		assertNotNull (test.getClusterPriors());
-		assertNotNull (test.getLogDensityPerClusterForInstance());
-		assertNotNull (test.getClusterModelsNumericAtts());
-		assertEquals(100, test.getSeed());
-		assertEquals(-1, test.getNumClusters());
-		assertEquals(1.0E-6, test.getMinStdDev(), 0.001);
-		assertEquals(100, test.getMaxIterations());
-		assertEquals(1, test.numberOfCluster());
+		Assert.assertNotNull (test.clusterPriors());
+		Assert.assertNotNull (test.getClusterModelsNumericAtts());
+		Assert.assertNotNull (test.getClusterPriors());
+		Assert.assertNotNull (test.getLogDensityPerClusterForInstance());
+		Assert.assertNotNull (test.getClusterModelsNumericAtts());
+		Assert.assertEquals(100, test.getSeed());
+		Assert.assertEquals(-1, test.getNumClusters());
+		Assert.assertEquals(1.0E-6, test.getMinStdDev(), 0.001);
+		Assert.assertEquals(100, test.getMaxIterations());
+		Assert.assertEquals(1, test.numberOfCluster());
 	}
 
 	/**

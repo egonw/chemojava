@@ -25,12 +25,11 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import org.junit.Assert;
+import org.junit.Test;
+import org.openscience.cdk.CDKTestCase;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.qsar.model.QSARModelException;
-import org.openscience.cdk.CDKTestCase;
-import org.openscience.chemojava.qsar.model.weka.SimpleLinearRegressionModel;
 
 /**
  * TestSuite that runs a test for the SimpleLinearRegressionModel
@@ -41,25 +40,11 @@ import org.openscience.chemojava.qsar.model.weka.SimpleLinearRegressionModel;
 public class SimpleLinearRegressionModelTest extends CDKTestCase{
 
 	/**
-	 * Constructor of the SimpleLinearRegressionModelTest object
-	 */
-	public SimpleLinearRegressionModelTest() {}
-
-	/**
-	 * A unit test suite for JUnit
-	 *
-	 * @return The test suite
-	 */
-	public static Test suite() {
-		return new TestSuite(SimpleLinearRegressionModelTest.class);
-	}
-
-	/**
 	 * @throws CDKException
 	 * @throws Exception
 	 * @throws QSARModelException
 	 */
-	public void testSimpleLinearRegressionModel1() throws CDKException, java.lang.Exception, QSARModelException {
+	@Test public void testSimpleLinearRegressionModel1() throws Exception {
 
 		double[][] x = {{1, 1}, {3, 3}, {4, 4}, {6, 6}};
 		Double[][] xD = new Double[x.length][x[0].length];
@@ -85,8 +70,8 @@ public class SimpleLinearRegressionModelTest extends CDKTestCase{
 		slrm.predict();
 
 		Double[] preds = (Double[]) slrm.getPredictPredicted();
-		assertEquals(1.0, (preds[0]).doubleValue(), 0.001);
-		assertEquals(4.0, (preds[1]).doubleValue(), 0.001);
+		Assert.assertEquals(1.0, (preds[0]).doubleValue(), 0.001);
+		Assert.assertEquals(4.0, (preds[1]).doubleValue(), 0.001);
 	}
 
 	/**

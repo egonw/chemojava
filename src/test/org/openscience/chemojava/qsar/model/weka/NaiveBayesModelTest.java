@@ -25,9 +25,8 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.qsar.model.QSARModelException;
@@ -42,25 +41,11 @@ import org.openscience.chemojava.libio.weka.Weka;
 public class NaiveBayesModelTest extends CDKTestCase{
 
 	/**
-	 * Constructor of the NaiveBayesModelTest object
-	 */
-	public NaiveBayesModelTest(){}
-
-	/**
-	 * A unit test suite for JUnit
-	 *
-	 * @return The test suite
-	 */
-	public static Test suite() {
-		return new TestSuite(NaiveBayesModelTest.class);
-	}
-
-	/**
 	 * @throws CDKException
 	 * @throws Exception
 	 * @throws QSARModelException
 	 */
-	public void testNaiveBayesModel() throws CDKException, java.lang.Exception, QSARModelException{
+	@Test public void testNaiveBayesModel() throws CDKException, java.lang.Exception, QSARModelException{
 		NaiveBayesModel test = new NaiveBayesModel();
 //		test.setOptions(new String[] {"-G"});
 		int[] typAttrib = {Weka.NUMERIC, Weka.NUMERIC, Weka.NUMERIC};
@@ -83,7 +68,7 @@ public class NaiveBayesModelTest extends CDKTestCase{
 		test.probabilities();
 		Object[][] result = test.getProbabilities();
 		test.updateClassifier();
-		assertNotNull(result); 
+		Assert.assertNotNull(result); 
 	}
 
 	/**

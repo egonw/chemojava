@@ -33,9 +33,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.InputStream;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
 import org.openscience.cdk.tools.LoggingTool;
 import org.openscience.chemojava.libio.openbabel.OpenBabelConvert;
@@ -49,18 +48,9 @@ import org.openscience.chemojava.libio.openbabel.OpenBabelConvert;
  */
 public class OpenBabelConvertTest extends CDKTestCase {
 
-    private static org.openscience.cdk.tools.LoggingTool logger;
+    private static LoggingTool logger = new LoggingTool(OpenBabelConvert.class);
 
-    public OpenBabelConvertTest(String name) {
-        super(name);
-        logger = new LoggingTool(this);
-    }
-
-    public static Test suite() {
-    	return new TestSuite(OpenBabelConvertTest.class);
-    }
-
-    public void test5_Hexen_3_one() throws Exception {
+    @Test public void test5_Hexen_3_one() throws Exception {
         String filenameInput = "data/mdl/540545.mol";
         InputStream ins = this.getClass().getClassLoader().getResourceAsStream(filenameInput);
         File fileOutput = File.createTempFile("540545.", ".mol");
@@ -95,7 +85,7 @@ public class OpenBabelConvertTest extends CDKTestCase {
         	lineCount++; 
         	line = reader.readLine();
         }
-        assertTrue(lineCount > 0);
+        Assert.assertTrue(lineCount > 0);
     }
 
 }

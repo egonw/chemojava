@@ -1,8 +1,8 @@
 package org.openscience.chemojava.modulesuites;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 import org.openscience.chemojava.libio.weka.WekaTest;
 
 /**
@@ -12,15 +12,10 @@ import org.openscience.chemojava.libio.weka.WekaTest;
  * @cdk.depends weka.jar
  * @cdk.depends junit.jar
  */
+@RunWith(Suite.class)
+@SuiteClasses({
+    WekaTest.class
+})
 public class MqsarwekaTests {
-    
-    public static Test suite() {
-        TestSuite suite= new TestSuite("CDK QSAR weka Tests");
-
-        // Individual Tests
-        
-        suite.addTest(WekaTest.suite());
-        return suite;
-    }
     
 }

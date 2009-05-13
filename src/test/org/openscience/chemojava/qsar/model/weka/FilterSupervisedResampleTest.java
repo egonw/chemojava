@@ -25,9 +25,8 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
 import org.openscience.chemojava.libio.weka.Weka;
 
@@ -40,23 +39,9 @@ import org.openscience.chemojava.libio.weka.Weka;
 public class FilterSupervisedResampleTest extends CDKTestCase{
 
 	/**
-	 * Constructor of the FilterSupervisedResampleTest
-	 */
-	public FilterSupervisedResampleTest(){}
-
-	/**
-	 * A unit test suite for JUnit
-	 *
-	 * @return The test suite
-	 */
-	public static Test suite() {
-		return new TestSuite(FilterSupervisedResampleTest.class);
-	}
-
-	/**
 	 * @throws Exception
 	 */
-	public void testFilterSupervisedResample() throws Exception{
+	@Test public void testFilterSupervisedResample() throws Exception{
 		//String[] options = {"-S", "1"};
 		FilterSupervisedResample test = new FilterSupervisedResample();
 		//test.setOptions(options);
@@ -72,9 +57,9 @@ public class FilterSupervisedResampleTest extends CDKTestCase{
 		String[] attrib = {"X1", "X2", "X3"};
 		test.setData(attrib, typAttrib, classAttrib, y, xD);
 		test.build();	
-		assertEquals(0.0, test.getBiasToUniformClass(), 0.001);
-		assertEquals(1, test.getRandomSeed());
-		assertEquals(100.0, test.getSampleSizePercent(), 0.001);
+		Assert.assertEquals(0.0, test.getBiasToUniformClass(), 0.001);
+		Assert.assertEquals(1, test.getRandomSeed());
+		Assert.assertEquals(100.0, test.getSampleSizePercent(), 0.001);
 	}
 
 	/**

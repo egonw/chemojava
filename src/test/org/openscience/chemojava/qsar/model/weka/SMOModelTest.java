@@ -25,8 +25,8 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.qsar.model.QSARModelException;
 import org.openscience.cdk.CDKTestCase;
@@ -42,25 +42,11 @@ import org.openscience.chemojava.qsar.model.weka.SMOModel;
 public class SMOModelTest extends CDKTestCase{
 
 	/**
-	 * Constructor of the SMOModelTest object
-	 */
-	public SMOModelTest(){}
-
-	/**
-	 * A unit test suite for JUnit
-	 *
-	 * @return The test suite
-	 */
-	public static Test suite() {
-		return new TestSuite(SMOModelTest.class);
-	}
-
-	/**
 	 * @throws CDKException
 	 * @throws Exception
 	 * @throws QSARModelException
 	 */
-	public void testSMOModel() throws CDKException, java.lang.Exception, QSARModelException{
+	@Test public void testSMOModel() throws Exception{
 		SMOModel test = new SMOModel();
 		int[] typAttrib = {Weka.NUMERIC, Weka.NUMERIC, Weka.NUMERIC};
 		String[] classAttrib = {"A_", "B_", "C_"};
@@ -81,25 +67,25 @@ public class SMOModelTest extends CDKTestCase{
 		test.setParameters(newx);
 		test.probabilities();
 		Object[][] result = test.getProbabilities();
-		assertNotNull (test.attributeNames());
-		assertNotNull (test.bias());
-		assertNotNull(test.classAttributeNames());
-		assertNotNull (test.sparseIndices());
-		assertNotNull (test.sparseWeights()); 
-		assertNotNull(result);
-		assertEquals (false, test.getBuildLogisticModels());
-		assertEquals (1.0, test.getC(), 0.001);
-		assertEquals (250007, test.getCacheSize());
-		assertEquals (1.0E-12, test.getEpsilon(), 0.001);
-		assertEquals (1.0, test.getExponent(), 0.01);
-		assertEquals (false, test.getFeatureSpaceNormalization());
-		assertEquals (0.01, test.getGamma(),  0.001);
-		assertEquals (false, test.getLowerOrderTerms());
-		assertEquals (-1, test.getNumFolds());
-		assertEquals (1, test.getRandomSeed());
-		assertEquals (0.0010, test.getToleranceParameter(), 0.001);
-		assertEquals (false, test.getUserRBF());
-		assertEquals (3, test.numClassAttributeValues());	   
+		Assert.assertNotNull (test.attributeNames());
+		Assert.assertNotNull (test.bias());
+		Assert.assertNotNull(test.classAttributeNames());
+		Assert.assertNotNull (test.sparseIndices());
+		Assert.assertNotNull (test.sparseWeights()); 
+		Assert.assertNotNull(result);
+		Assert.assertEquals (false, test.getBuildLogisticModels());
+		Assert.assertEquals (1.0, test.getC(), 0.001);
+		Assert.assertEquals (250007, test.getCacheSize());
+		Assert.assertEquals (1.0E-12, test.getEpsilon(), 0.001);
+		Assert.assertEquals (1.0, test.getExponent(), 0.01);
+		Assert.assertEquals (false, test.getFeatureSpaceNormalization());
+		Assert.assertEquals (0.01, test.getGamma(),  0.001);
+		Assert.assertEquals (false, test.getLowerOrderTerms());
+		Assert.assertEquals (-1, test.getNumFolds());
+		Assert.assertEquals (1, test.getRandomSeed());
+		Assert.assertEquals (0.0010, test.getToleranceParameter(), 0.001);
+		Assert.assertEquals (false, test.getUserRBF());
+		Assert.assertEquals (3, test.numClassAttributeValues());	   
 	}
 
 	/**

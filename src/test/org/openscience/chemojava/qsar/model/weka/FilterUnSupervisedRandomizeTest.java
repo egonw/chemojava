@@ -25,9 +25,8 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
 import org.openscience.chemojava.libio.weka.Weka;
 
@@ -40,23 +39,9 @@ import org.openscience.chemojava.libio.weka.Weka;
 public class FilterUnSupervisedRandomizeTest extends CDKTestCase{
 
 	/**
-	 * Constructor of the FilterUnSupervisedRandomizeTest
-	 */
-	public FilterUnSupervisedRandomizeTest(){}
-
-	/**
-	 * A unit test suite for JUnit
-	 *
-	 * @return The test suite
-	 */
-	public static Test suite() {
-		return new TestSuite(FilterUnSupervisedRandomizeTest.class);
-	}
-
-	/**
 	 * @throws Exception
 	 */
-	public void testFilterUnSupervisedRandomize() throws Exception{
+	@Test public void testFilterUnSupervisedRandomize() throws Exception{
 		//String[] options = {"-S", "1"};
 		FilterUnSupervisedRandomize test = new FilterUnSupervisedRandomize();
 		//test.setOptions(options);
@@ -72,7 +57,7 @@ public class FilterUnSupervisedRandomizeTest extends CDKTestCase{
 		String[] attrib = {"X1", "X2", "X3"};
 		test.setData(attrib, typAttrib, classAttrib, y, xD);
 		test.build();
-		assertEquals(42, test.getRandomSeed());
+		Assert.assertEquals(42, test.getRandomSeed());
 	}
 
 	/**

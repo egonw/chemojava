@@ -27,12 +27,9 @@
  *  */
 package org.openscience.chemojava.libio.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
-import org.openscience.cdk.exception.CDKException;
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
-import org.openscience.chemojava.libio.weka.Weka;
 
 import weka.classifiers.functions.LinearRegression;
 import weka.classifiers.trees.J48;
@@ -45,23 +42,10 @@ import weka.classifiers.trees.J48;
 public class WekaTest extends CDKTestCase {
 
 	/**
-	 *  Constructor for the WekaTest object
-	 *
+	 *  A unit test for JUnit. Test and prediction using file arff format,
+	 *  algorithm = Linear Regression.
 	 */
-	public  WekaTest() {
-	}
-	/**
-	 *  A unit test suite for JUnit
-	 *
-	 *@return    The test suite
-	 */
-	public static Test suite() {
-		return new TestSuite(WekaTest.class);
-	}
-	/**
-	 *  A unit test for JUnit. Test and prediction using file arff format, algorithm = Lineal Regression
-	 */
-	public void test1() throws ClassNotFoundException, CDKException, java.lang.Exception {
+	@Test public void test1() throws Exception {
 		LinearRegression lr = new LinearRegression();
 		String[] options = new String[4];
 		options[0] = "-U";                                   
@@ -72,13 +56,14 @@ public class WekaTest extends CDKTestCase {
 		Weka weka = new Weka();
 		weka.setDatasetCDK("data/arff/Table1.arff", lr);
 		Object[] result = weka.getPredictionCDK("data/arff/Table2.arff");
-		assertNotNull(result);
+		Assert.assertNotNull(result);
     }
+
 	/**
-	 *  A unit test for JUnit. Test using file arrf and prdiction using Array, 
-	 *  algorithm = Lineal Regression
+	 *  A unit test for JUnit. Test using file arrf and prediction using Array, 
+	 *  algorithm = Linear Regression.
 	 */
-	public void test2() throws ClassNotFoundException, CDKException, java.lang.Exception {
+	@Test public void test2() throws Exception {
 		LinearRegression lr = new LinearRegression(); 
 		String[] options = new String[4];
 		options[0] = "-U";                                   
@@ -92,12 +77,14 @@ public class WekaTest extends CDKTestCase {
 			{new Double(5),new Double(5)}
 		};
 		Object[] result = weka.getPrediction(testX);
-		assertNotNull(result);
+		Assert.assertNotNull(result);
     }
+
 	/**
-	 *  A unit test for JUnit. Test and prediction using Array, algorithm = Lineal Regression
+	 *  A unit test for JUnit. Test and prediction using Array, algorithm =
+	 *  Linear Regression.
 	 */
-	public void test3() throws ClassNotFoundException, CDKException, java.lang.Exception {
+	@Test public void test3() throws Exception {
 		LinearRegression lr = new LinearRegression();
 		String[] attrib = {"X2","X1", "Y" };
 		int[] typAttrib = {Weka.NUMERIC,Weka.NUMERIC,Weka.NUMERIC};
@@ -118,12 +105,13 @@ public class WekaTest extends CDKTestCase {
 				{new Double(5),new Double(5)}
 			};
 		Object[] result = weka.getPrediction(testX);
-		assertNotNull(result);
+		Assert.assertNotNull(result);
     }
+
 	/**
 	 *  A unit test for JUnit. Test prediction using Array, algorithm = J48
 	 */
-	public void test4() throws ClassNotFoundException, CDKException, java.lang.Exception {
+	@Test public void test4() throws Exception {
 		String[] options = new String[1];
 		options[0] = "-U";
 		J48 j48 = new J48();
@@ -144,6 +132,6 @@ public class WekaTest extends CDKTestCase {
 		Double[][] testX = {{new Double(11),new Double(-11),new Double(-11)},
 				{new Double(-10),new Double(-10),new Double(-10)}};
 		Object[] resultY = weka.getPrediction(testX);
-		assertNotNull(resultY);
+		Assert.assertNotNull(resultY);
     }
 }

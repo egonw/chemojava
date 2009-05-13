@@ -24,9 +24,8 @@
 
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.qsar.model.QSARModelException;
@@ -39,27 +38,13 @@ import org.openscience.chemojava.libio.weka.Weka;
  * @cdk.module test-qsar
  */
 public class J48WModelTest extends CDKTestCase {
-    /**
-     * Constructor of the J48WModelTest object
-     */
-    public J48WModelTest() {
-    }
-
-    /**
-     * A unit test suite for JUnit
-     *
-     * @return The test suite
-     */
-    public static Test suite() {
-        return new TestSuite(J48WModelTest.class);
-    }
 
     /**
      * @throws CDKException
      * @throws Exception
      * @throws QSARModelException
      */
-    public void testJ48WModel1() throws CDKException, java.lang.Exception, QSARModelException {
+    @Test public void testJ48WModel1() throws Exception {
         int[] typAttrib = {Weka.NUMERIC, Weka.NUMERIC, Weka.NUMERIC};
         String[] classAttrib = {"A_", "B_", "C_"};
         double[][] x = {{10, 10, 10}, {10, -10, -10}, {-10, -10, -10},
@@ -84,8 +69,8 @@ public class J48WModelTest extends CDKTestCase {
         j48.predict();
 
         String[] preds = (String[]) j48.getPredictPredicted();
-        assertEquals("B_", preds[0]);
-        assertEquals("C_", preds[1]);
+        Assert.assertEquals("B_", preds[0]);
+        Assert.assertEquals("C_", preds[1]);
     }
 
     /**
@@ -93,7 +78,7 @@ public class J48WModelTest extends CDKTestCase {
      * @throws Exception
      * @throws QSARModelException
      */
-    public void testJ48WModel2() throws CDKException, java.lang.Exception, QSARModelException {
+    @Test public void testJ48WModel2() throws CDKException, java.lang.Exception, QSARModelException {
         J48WModel j48 = new J48WModel(true, "data/arff/Table3.arff");
         String[] options = new String[1];
         options[0] = "-U";
@@ -104,8 +89,8 @@ public class J48WModelTest extends CDKTestCase {
         j48.setParameters(testX);
         j48.predict();
         String[] preds = (String[]) j48.getPredictPredicted();
-        assertEquals("B_", preds[0]);
-        assertEquals("C_", preds[1]);
+        Assert.assertEquals("B_", preds[0]);
+        Assert.assertEquals("C_", preds[1]);
     }
 }
 

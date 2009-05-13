@@ -25,9 +25,8 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
 import org.openscience.chemojava.libio.weka.Weka;
 
@@ -40,23 +39,9 @@ import org.openscience.chemojava.libio.weka.Weka;
 public class DensityBasedClustererModelTest extends CDKTestCase{
 
 	/**
-	 * Constructor of the DensityBasedClustererModelTest
-	 */
-	public DensityBasedClustererModelTest(){}
-
-	/**
-	 * A unit test suite for JUnit
-	 *
-	 * @return The test suite
-	 */
-	public static Test suite() {
-		return new TestSuite(DensityBasedClustererModelTest.class);
-	}
-
-	/**
 	 * @throws Exception
 	 */
-	public void testDensityBasedClustererModel() throws Exception{
+	@Test public void testDensityBasedClustererModel() throws Exception{
 		DensityBasedClustererModel test = new DensityBasedClustererModel();
 		int[] typAttrib = {Weka.NUMERIC, Weka.NUMERIC, Weka.NUMERIC};
 		String[] classAttrib = {"A_", "B_", "C_"};
@@ -76,11 +61,11 @@ public class DensityBasedClustererModelTest extends CDKTestCase{
 				{new Double(19), new Double(29), new Double(39)},
 		};
 		test.setParameters(newx);
-		assertNotNull (test.distributionForInstance());
-		assertNotNull (test.logDensityForInstance());
-		assertNotNull (test.logDensityPerClusterForInstance());
-		assertNotNull (test.logJointDensitiesForInstance());
-		assertNotNull (test.clusterPriors());
+		Assert.assertNotNull (test.distributionForInstance());
+		Assert.assertNotNull (test.logDensityForInstance());
+		Assert.assertNotNull (test.logDensityPerClusterForInstance());
+		Assert.assertNotNull (test.logJointDensitiesForInstance());
+		Assert.assertNotNull (test.clusterPriors());
 	}
 
 	/**

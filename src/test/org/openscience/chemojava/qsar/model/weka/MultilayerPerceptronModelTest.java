@@ -25,9 +25,8 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.qsar.model.QSARModelException;
@@ -42,25 +41,11 @@ import org.openscience.chemojava.libio.weka.Weka;
 public class MultilayerPerceptronModelTest extends CDKTestCase{
 
 	/**
-	 * Constructor of the MultilayerPerceptronModelTest object
-	 */
-	public MultilayerPerceptronModelTest(){}
-
-	/**
-	 * A unit test suite for JUnit
-	 *
-	 * @return The test suite
-	 */
-	public static Test suite() {
-		return new TestSuite(MultilayerPerceptronModelTest.class);
-	}
-
-	/**
 	 * @throws CDKException
 	 * @throws Exception
 	 * @throws QSARModelException
 	 */
-	public void testMultilayerPerceptronModel() throws CDKException, java.lang.Exception, QSARModelException{
+	@Test public void testMultilayerPerceptronModel() throws CDKException, java.lang.Exception, QSARModelException{
 		MultilayerPerceptronModel test = new MultilayerPerceptronModel();
 //		test.setOptions(new String[] {"-G"});
 		int[] typAttrib = {Weka.NUMERIC, Weka.NUMERIC, Weka.NUMERIC};
@@ -82,14 +67,14 @@ public class MultilayerPerceptronModelTest extends CDKTestCase{
 		test.setParameters(newx);
 		test.predict();
 		Object[][] result = test.getPredictPredicted();
-		assertNotNull(result); 
-		assertEquals ("a", test.getHiddenLayers());
-		assertEquals (0.3, test.getLearningRate(), 0.01);
-		assertEquals(0.2, test.getMomentum(), 0.01);
-		assertEquals (0, test.getRandomSeed());
-		assertEquals (500.0, test.getTrainingTime(), 0.01);
-		assertEquals (0.0, test.getValidationSetSize(), 0.001);
-		assertEquals (20.0, test.getValidationThreshold(), 0.01);
+		Assert.assertNotNull(result); 
+		Assert.assertEquals ("a", test.getHiddenLayers());
+		Assert.assertEquals (0.3, test.getLearningRate(), 0.01);
+		Assert.assertEquals(0.2, test.getMomentum(), 0.01);
+		Assert.assertEquals (0, test.getRandomSeed());
+		Assert.assertEquals (500.0, test.getTrainingTime(), 0.01);
+		Assert.assertEquals (0.0, test.getValidationSetSize(), 0.001);
+		Assert.assertEquals (20.0, test.getValidationThreshold(), 0.01);
 	}
 
 	/**

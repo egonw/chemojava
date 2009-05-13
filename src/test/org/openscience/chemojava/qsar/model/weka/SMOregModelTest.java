@@ -25,9 +25,8 @@
  */
 package org.openscience.chemojava.qsar.model.weka;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
+import org.junit.Assert;
+import org.junit.Test;
 import org.openscience.cdk.CDKTestCase;
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.qsar.model.QSARModelException;
@@ -41,25 +40,11 @@ import org.openscience.cdk.qsar.model.QSARModelException;
 public class SMOregModelTest extends CDKTestCase{
 
 	/**
-	 * Constructor of the SMOregModelTest object
-	 */
-	public SMOregModelTest(){}
-
-	/**
-	 * A unit test suite for JUnit
-	 *
-	 * @return The test suite
-	 */
-	public static Test suite() {
-		return new TestSuite(SMOregModelTest.class);
-	}
-
-	/**
 	 * @throws CDKException
 	 * @throws Exception
 	 * @throws QSARModelException
 	 */
-	public void testSMOregModel() throws CDKException, java.lang.Exception, QSARModelException{
+	@Test public void testSMOregModel() throws Exception{
 		SMOregModel test = new SMOregModel();
 		double[][] x = {{10, 10, 10}, {10, -10, -10}, {-10, -10, -10},
 				{11, 11, 11}, {11, -11, -11}, {-11, -11, -11}};
@@ -77,17 +62,17 @@ public class SMOregModelTest extends CDKTestCase{
 		test.setParameters(newx);
 		test.classifyInstance();
 		Object[] result = test.getClassification();
-		assertNotNull (result);
-		assertEquals (1.0, test.getC(), 0.001);
-		assertEquals (250007, test.getCacheSize());
-		assertEquals (0.0010, test.getEpsilon(), 0.001);
-		assertEquals (1.0, test.getExponent(), 0.01);
-		assertEquals (false, test.getFeatureSpaceNormalization());
-		assertEquals (0.01, test.getGamma(), 0.001);
-		assertEquals (false, test.getLowerOrderTerms());
-		assertEquals (0.0010, test.getToleranceParameter(), 0.001);
-		assertEquals (false, test.getUserRBF());
-		assertEquals (1.0E-12, test.getEps(), 0.001); 
+		Assert.assertNotNull (result);
+		Assert.assertEquals (1.0, test.getC(), 0.001);
+		Assert.assertEquals (250007, test.getCacheSize());
+		Assert.assertEquals (0.0010, test.getEpsilon(), 0.001);
+		Assert.assertEquals (1.0, test.getExponent(), 0.01);
+		Assert.assertEquals (false, test.getFeatureSpaceNormalization());
+		Assert.assertEquals (0.01, test.getGamma(), 0.001);
+		Assert.assertEquals (false, test.getLowerOrderTerms());
+		Assert.assertEquals (0.0010, test.getToleranceParameter(), 0.001);
+		Assert.assertEquals (false, test.getUserRBF());
+		Assert.assertEquals (1.0E-12, test.getEps(), 0.001); 
 	}
 
 	/**
