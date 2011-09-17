@@ -1,6 +1,6 @@
 CDK-GPL The Chemical Development Kit GPL extension
  
-Copyright 2008 The CDK Development Team
+Copyright 2008-2011 The CDK Development Team
 License: GPL v2, see doc/gpl.license
 
 1. Introduction
@@ -21,7 +21,4 @@ code which uses GPL libraries.
 
 2. Compile
 
-First you need to copy a cdk-svnXXXXXXX.jar created for the CDK library with 'ant dist-large'. Copy
-this jar into cdk-gpl/jar/.
-
-Then issue in this directory: ant dist-all
+> ant dist-all
