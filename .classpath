@@ -16,5 +16,7 @@
 	<classpathentry kind="lib" path="develjar/com-sun-javadoc.jar"/>
 	<classpathentry kind="lib" path="develjar/com-sun-tools-doclets-Taglet.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.openscience.cdk"/>
+	<classpathentry kind="lib" path="jar/JRI.jar"/>
+	<classpathentry kind="lib" path="jar/sjava-0.68.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
