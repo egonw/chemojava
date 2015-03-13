@@ -1,0 +1,1 @@
+ChemoJava is a project based on the Chemistry Development Kit (LGPL). It aggregates chemoinformatics functionality which itself is license GPL, but using the CDK APIs. It is not aimed at replacing the CDK, but complementing it with unique functionality, possibly from originally other projects, which is not available from the CDK itself.
